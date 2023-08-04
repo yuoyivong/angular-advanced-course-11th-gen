@@ -1,0 +1,93 @@
+<!-- first way, but I think this way isn't the best practice at all 
+  since you will have to duplicate the conten -->
+<!-- <div *ngIf="item; else noItem">
+  <div class="border border-slate-400 shadow-md rounded-lg p-5">
+    <h1>
+      {{ item.subjectName }}
+    </h1>
+
+    <p>
+      {{ item.description }}
+    </p>
+
+    <div class="flex">
+      <div class="w-1/2">
+        <h2>We invest in the world's potential</h2>
+
+        <ul *ngFor="let potential of worldPotential">
+          <li class="flex items-center">
+            <img
+              src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAAFOUlEQVR4nO2ZfUwcRRTAr1pMExNSxegdrX+Y1NP+JTT+oQYwtRqpIK0CdSEa06RtBK5GqHypCQm2tilXKAECFI525mwVotYaMcKh1X9M1LuYaD/AlM4e2qiUr0uwaXeWvuYt5Tju+3b3EJN7yQvJcvNmfvvmvZn31mBISEISkpCVINNDpk0eh7Fi2pGavqwTA9TdAez4o5ydeEkWqUV202pFRWrBZ/g//E0kOzMOUz9CzDhM3DNkghmHSZoeSE2L7+KdnUn8MtkmM9rHGZ2QRQrhFH/DGenlbnsejg1l1zNk3IcQXnUYK+IDcK7vLlkke7lIxyItPiSUSN3orWBA047UdPTEgkemvln3mO4QktueyUV6QS1AoJfIeclNMgJgBlLTPA5jue4QALBKZuRdzoisF4QPDJcZrcU5dF10IETfnZyRbr0BggB14Vy+c09l5OdOZeV7pjILczRCwCqcIN4Q8mJCoL6eQQAEmcx6+YWoF+3Zsj1lIiO/fOaJwnsXnuF28p/s35EecJyohvZDJdB28A1VimOHSDXMDtsCgRip0fT2J7MKK6ayCgBhvIHtFxMjZ60gFGSDucoCaxvqILmxXpXiWHNVKRTmPQvD31oDYkYS6VOqQdAT05kFb+FfTLH+2Qk98UpBNiT1NMPq482wvrIMHtq7KyZdV/0mGE51eBVtCQXZcO13W0A2C3fWRC14Tvi7HLcTegIhNr4uwJrOhiWLUqsbKsvga1LjnWfuyheKyoyUaj+xgxx2bfv3KFviwbctukGgrm2og5b9ewJAuEhETV7hjG4PllGa6ncr+3tDyU7dINC7yY31iu2gWUwkuRpASO9ygaCt5PAgp1RB4A2VM3J1xXiE0Ylobs2BIIxsDHVYaQW5z9YEBz62wdO2Zu+z++sqw4KgwmX7IzGD3K4ndAdBiJODZ+Dq+ChkHmuMemvJ6BW3PU+XtBsOJIm2grE9fAZL6W6CDwc/VyBy2q1LAd+vjQgii7QsdhBmfycWkFd7WkD84wJs6bCGhLAPng4KgXp3yweRQRitVQ0y99dXMDf5I8juk2FBjN1H4fT3/eD+cxg2dy5daIotPES0W0tWBYL1NgbY3HVAUWAixMgDXUeg13EGxq5chGfa5rfZPd1N0PNlH4yPX4Lc1sOq06+sdmstBPvNWabAoGeiCXZTV6PiGTZ2Hp5vOgB04DPFE7ntRzSdI7LaYNeSftEzn3zXD9ev/T0P0REeIloQUJN+JZfwuHSxbla+1Koq/aJnDn9KYWvnYorVAsJF8k/MJfAN545NkquIc1cRcFcxyKNt/88riuQU9s1D3Nbh+hUAYo+9Vr/xk5AuuQQJISRX8U15tDXoNR4LKj2u8Ws6rLC+0hJwjffxhghwdnXMIArML8Vpkkso5yOHDqKx2R82ew1jjW2uLlssrEIcgtFCoA209XBlKQzQ2mDnR4lBq+CbkBn51dcwNgqwxl4sdS1g3vWaKsWxaCPJdhR2bHtOKaP9IM7pUuqiYAdQaZ75TICNAqyx8S1qbT6gDYQYCdZ8YORJg56C1wN/l2OjYIDUQHP9brC+t1OV4thBWhvoCVHRKoPe8h806I5xZ3Gu5BI83CnkxKNl2rUcEIBzOYUcBeTnoui7izE2sWv8Y0YfAMLjsp3CCXYAMaPoBsLIb7oHdrSCaRGbZ3hgqfYCjmW0RLcUq7a57W3kuemLXCQfcZGOR148Hce7E/aqVJ/Yeja3Q8UQjBLz/DdFUur9GIqew2+Go8Qc9w85sTS3I/44IQlJSEIMcZBb3nNcD7uG7XEAAAAASUVORK5CYII="
+            />
+            <p>{{ potential }}</p>
+          </li>
+        </ul>
+      </div>
+
+      <div class="w-52 m-auto">
+        <img src="../../../assets/images/{{ item.thumbnail }}" />
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #noItem>
+  <div class="border border-slate-400 shadow-md rounded-lg p-5">
+    <h1>
+      {{ subject.subjectName }}
+    </h1>
+
+    <p>
+      {{ subject.description }}
+    </p>
+
+    <div class="flex">
+      <div class="w-1/2">
+        <h2>We invest in the world's potential</h2>
+
+        <ul *ngFor="let potential of worldPotential">
+          <li class="flex items-center">
+            <img
+              src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAAFOUlEQVR4nO2ZfUwcRRTAr1pMExNSxegdrX+Y1NP+JTT+oQYwtRqpIK0CdSEa06RtBK5GqHypCQm2tilXKAECFI525mwVotYaMcKh1X9M1LuYaD/AlM4e2qiUr0uwaXeWvuYt5Tju+3b3EJN7yQvJcvNmfvvmvZn31mBISEISkpCVINNDpk0eh7Fi2pGavqwTA9TdAez4o5ydeEkWqUV202pFRWrBZ/g//E0kOzMOUz9CzDhM3DNkghmHSZoeSE2L7+KdnUn8MtkmM9rHGZ2QRQrhFH/DGenlbnsejg1l1zNk3IcQXnUYK+IDcK7vLlkke7lIxyItPiSUSN3orWBA047UdPTEgkemvln3mO4QktueyUV6QS1AoJfIeclNMgJgBlLTPA5jue4QALBKZuRdzoisF4QPDJcZrcU5dF10IETfnZyRbr0BggB14Vy+c09l5OdOZeV7pjILczRCwCqcIN4Q8mJCoL6eQQAEmcx6+YWoF+3Zsj1lIiO/fOaJwnsXnuF28p/s35EecJyohvZDJdB28A1VimOHSDXMDtsCgRip0fT2J7MKK6ayCgBhvIHtFxMjZ60gFGSDucoCaxvqILmxXpXiWHNVKRTmPQvD31oDYkYS6VOqQdAT05kFb+FfTLH+2Qk98UpBNiT1NMPq482wvrIMHtq7KyZdV/0mGE51eBVtCQXZcO13W0A2C3fWRC14Tvi7HLcTegIhNr4uwJrOhiWLUqsbKsvga1LjnWfuyheKyoyUaj+xgxx2bfv3KFviwbctukGgrm2og5b9ewJAuEhETV7hjG4PllGa6ncr+3tDyU7dINC7yY31iu2gWUwkuRpASO9ygaCt5PAgp1RB4A2VM3J1xXiE0Ylobs2BIIxsDHVYaQW5z9YEBz62wdO2Zu+z++sqw4KgwmX7IzGD3K4ndAdBiJODZ+Dq+ChkHmuMemvJ6BW3PU+XtBsOJIm2grE9fAZL6W6CDwc/VyBy2q1LAd+vjQgii7QsdhBmfycWkFd7WkD84wJs6bCGhLAPng4KgXp3yweRQRitVQ0y99dXMDf5I8juk2FBjN1H4fT3/eD+cxg2dy5daIotPES0W0tWBYL1NgbY3HVAUWAixMgDXUeg13EGxq5chGfa5rfZPd1N0PNlH4yPX4Lc1sOq06+sdmstBPvNWabAoGeiCXZTV6PiGTZ2Hp5vOgB04DPFE7ntRzSdI7LaYNeSftEzn3zXD9ev/T0P0REeIloQUJN+JZfwuHSxbla+1Koq/aJnDn9KYWvnYorVAsJF8k/MJfAN545NkquIc1cRcFcxyKNt/88riuQU9s1D3Nbh+hUAYo+9Vr/xk5AuuQQJISRX8U15tDXoNR4LKj2u8Ws6rLC+0hJwjffxhghwdnXMIArML8Vpkkso5yOHDqKx2R82ew1jjW2uLlssrEIcgtFCoA209XBlKQzQ2mDnR4lBq+CbkBn51dcwNgqwxl4sdS1g3vWaKsWxaCPJdhR2bHtOKaP9IM7pUuqiYAdQaZ75TICNAqyx8S1qbT6gDYQYCdZ8YORJg56C1wN/l2OjYIDUQHP9brC+t1OV4thBWhvoCVHRKoPe8h806I5xZ3Gu5BI83CnkxKNl2rUcEIBzOYUcBeTnoui7izE2sWv8Y0YfAMLjsp3CCXYAMaPoBsLIb7oHdrSCaRGbZ3hgqfYCjmW0RLcUq7a57W3kuemLXCQfcZGOR148Hce7E/aqVJ/Yeja3Q8UQjBLz/DdFUur9GIqew2+Go8Qc9w85sTS3I/44IQlJSEIMcZBb3nNcD7uG7XEAAAAASUVORK5CYII="
+            />
+            <p>{{ potential }}</p>
+          </li>
+        </ul>
+      </div>
+
+      <div class="w-52 m-auto">
+        <img src="../../../assets/images/{{ subject.thumbnail }}" />
+      </div>
+    </div>
+  </div>
+</ng-template> -->
+
+<!-- second way -->
+<div class="border border-slate-400 shadow-md rounded-lg p-5">
+  <h1>
+    <ng-content select="[title]"></ng-content>
+  </h1>
+
+  <p>
+    <ng-content select="[description]"></ng-content>
+  </p>
+
+  <div class="flex">
+    <div class="w-1/2">
+      <h2>We invest in the world's potential</h2>
+
+      <ul *ngFor="let potential of worldPotential">
+        <li class="flex items-center">
+          <img
+            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAAFOUlEQVR4nO2ZfUwcRRTAr1pMExNSxegdrX+Y1NP+JTT+oQYwtRqpIK0CdSEa06RtBK5GqHypCQm2tilXKAECFI525mwVotYaMcKh1X9M1LuYaD/AlM4e2qiUr0uwaXeWvuYt5Tju+3b3EJN7yQvJcvNmfvvmvZn31mBISEISkpCVINNDpk0eh7Fi2pGavqwTA9TdAez4o5ydeEkWqUV202pFRWrBZ/g//E0kOzMOUz9CzDhM3DNkghmHSZoeSE2L7+KdnUn8MtkmM9rHGZ2QRQrhFH/DGenlbnsejg1l1zNk3IcQXnUYK+IDcK7vLlkke7lIxyItPiSUSN3orWBA047UdPTEgkemvln3mO4QktueyUV6QS1AoJfIeclNMgJgBlLTPA5jue4QALBKZuRdzoisF4QPDJcZrcU5dF10IETfnZyRbr0BggB14Vy+c09l5OdOZeV7pjILczRCwCqcIN4Q8mJCoL6eQQAEmcx6+YWoF+3Zsj1lIiO/fOaJwnsXnuF28p/s35EecJyohvZDJdB28A1VimOHSDXMDtsCgRip0fT2J7MKK6ayCgBhvIHtFxMjZ60gFGSDucoCaxvqILmxXpXiWHNVKRTmPQvD31oDYkYS6VOqQdAT05kFb+FfTLH+2Qk98UpBNiT1NMPq482wvrIMHtq7KyZdV/0mGE51eBVtCQXZcO13W0A2C3fWRC14Tvi7HLcTegIhNr4uwJrOhiWLUqsbKsvga1LjnWfuyheKyoyUaj+xgxx2bfv3KFviwbctukGgrm2og5b9ewJAuEhETV7hjG4PllGa6ncr+3tDyU7dINC7yY31iu2gWUwkuRpASO9ygaCt5PAgp1RB4A2VM3J1xXiE0Ylobs2BIIxsDHVYaQW5z9YEBz62wdO2Zu+z++sqw4KgwmX7IzGD3K4ndAdBiJODZ+Dq+ChkHmuMemvJ6BW3PU+XtBsOJIm2grE9fAZL6W6CDwc/VyBy2q1LAd+vjQgii7QsdhBmfycWkFd7WkD84wJs6bCGhLAPng4KgXp3yweRQRitVQ0y99dXMDf5I8juk2FBjN1H4fT3/eD+cxg2dy5daIotPES0W0tWBYL1NgbY3HVAUWAixMgDXUeg13EGxq5chGfa5rfZPd1N0PNlH4yPX4Lc1sOq06+sdmstBPvNWabAoGeiCXZTV6PiGTZ2Hp5vOgB04DPFE7ntRzSdI7LaYNeSftEzn3zXD9ev/T0P0REeIloQUJN+JZfwuHSxbla+1Koq/aJnDn9KYWvnYorVAsJF8k/MJfAN545NkquIc1cRcFcxyKNt/88riuQU9s1D3Nbh+hUAYo+9Vr/xk5AuuQQJISRX8U15tDXoNR4LKj2u8Ws6rLC+0hJwjffxhghwdnXMIArML8Vpkkso5yOHDqKx2R82ew1jjW2uLlssrEIcgtFCoA209XBlKQzQ2mDnR4lBq+CbkBn51dcwNgqwxl4sdS1g3vWaKsWxaCPJdhR2bHtOKaP9IM7pUuqiYAdQaZ75TICNAqyx8S1qbT6gDYQYCdZ8YORJg56C1wN/l2OjYIDUQHP9brC+t1OV4thBWhvoCVHRKoPe8h806I5xZ3Gu5BI83CnkxKNl2rUcEIBzOYUcBeTnoui7izE2sWv8Y0YfAMLjsp3CCXYAMaPoBsLIb7oHdrSCaRGbZ3hgqfYCjmW0RLcUq7a57W3kuemLXCQfcZGOR148Hce7E/aqVJ/Yeja3Q8UQjBLz/DdFUur9GIqew2+Go8Qc9w85sTS3I/44IQlJSEIMcZBb3nNcD7uG7XEAAAAASUVORK5CYII="
+          />
+          <p>{{ potential }}</p>
+        </li>
+      </ul>
+    </div>
+
+    <div class="w-52 m-auto">
+      <ng-content select="[image]"></ng-content> 
+    </div>
+  </div>
+</div>

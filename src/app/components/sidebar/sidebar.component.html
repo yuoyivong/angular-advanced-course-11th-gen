@@ -1,0 +1,15 @@
+<div>
+  <div class="border border-slate-400 shadow-md rounded-lg p-5">
+    <h1 class="font-bold">{{ "my favorite subject" | titlecase }}</h1>
+
+    <div *ngFor="let subject of subject_list | sort">
+      <button
+        (click)="getSubject(subject)"
+        class="flex bg-slate-100 hover:bg-slate-300 w-full p-2 rounded-lg mt-2"
+      >
+        <img src="../../../assets/images/{{ subject.thumbnail }}" alt="" />
+        <span>{{ subject.subjectName }}</span>
+      </button>
+    </div>
+  </div>
+</div>

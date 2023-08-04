@@ -1,0 +1,48 @@
+<div
+  class="grid grid-cols-9 container mx-auto mt-10 gap-5"
+  *appIfLogin="isLoggedIn"
+>
+  <div class="col-span-2">
+    <app-sidebar (getSubjectFromSidebar)="subjectInfo($event)"></app-sidebar>
+    <button
+      (click)="logOut()"
+      class="mt-2 relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800"
+    >
+      <span
+        class="relative px-5 py-2 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0"
+      >
+        Log Out
+      </span>
+    </button>
+  </div>
+
+  <div class="col-span-7">
+    <!-- first way -->
+    <!-- <app-content [item]="favoriteSubject"> </app-content> -->
+    <!-- second way -->
+    <app-content>
+      <h1 title>{{ subject.subjectName }}</h1>
+      <p description>{{ subject.description }}</p>
+      <img image src="../../../assets/images/{{ subject.thumbnail }}" />
+    </app-content>
+  </div>
+</div>
+
+<div *appIfLogin="!isLoggedIn">
+  <div
+    class="h-screen flex flex-col justify-center bg-gradient-to-r from-violet-500 to-fuchsia-500 text-white"
+  >
+    <p class="text-3xl text-center">
+      Welcome to New Angular Homework! <br />
+      Please log in to see the content inside.
+    </p>
+    <div class="text-center">
+      <button
+        (click)="logIn()"
+        class="bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 rounded-lg py-2 px-4 w-24 mt-3"
+      >
+        Log In
+      </button>
+    </div>
+  </div>
+</div>

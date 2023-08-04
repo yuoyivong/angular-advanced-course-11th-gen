@@ -1,0 +1,16 @@
+h1 {
+  text-transform: capitalize;
+  font-size: 32px;
+  font-weight: bold;
+}
+
+h2 {
+  padding: 50px 0px;
+  font-weight: bold;
+  font-size: 24px;
+}
+
+p,
+li {
+  font-size: 18px;
+}
