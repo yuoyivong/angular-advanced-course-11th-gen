@@ -1,0 +1,68 @@
+<div class="h-[110vh]">
+  <div
+    class="bg-no-repeat w-full bg-cover h-[399px] relative"
+    style="
+      background-image: url('../../../assets/images/Add\ Book\ Header.svg');
+    "
+  >
+    <div class="pt-10 pl-24">
+      <img src="../../../assets/images/Button.svg" alt="" />
+    </div>
+    <div
+      class="bg-contentBg h-[754px] w-2/3 absolute z-10 top-48 left-64 rounded-xl"
+    >
+      <p class="capitalize text-3xl text-center pt-5">add new book</p>
+      <form [formGroup]="addNewBookForm" (ngSubmit)="submitAddNewBook()">
+        <div class="grid grid-cols-2 mt-8">
+          <div class="col-span-1 flex justify-center items-center">
+            <img src="../../../assets/images/Group 7582.svg" alt="" />
+          </div>
+
+          <div class="col-span-1 pt-5">
+            <label for="title">Title </label> <br />
+            <input
+              type="text"
+              formControlName="title"
+              placeholder="Enter title"
+              class="font-light"
+            />
+            <br />
+
+            <label for="author">Author </label> <br />
+            <input
+              type="text"
+              formControlName="author"
+              placeholder="Enter Author Name"
+              class="font-light"
+            />
+            <br />
+
+            <label for="category">Category </label> <br />
+            <select formControlName="category">
+              <option value="" selected class="font-light">
+                Choose Category
+              </option>
+            </select>
+
+            <br />
+          </div>
+        </div>
+
+        <!-- description -->
+        <div class="px-20">
+          <label for="description">Description </label> <br />
+          <textarea
+            type="text"
+            formControlName="description"
+            placeholder="Enter a description"
+            class="font-light"
+          ></textarea>
+          <br />
+        </div>
+        <div class="px-20">
+          <button class="mt-5 py-2 px-8 rounded-xl bg-btnYellow">Create</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

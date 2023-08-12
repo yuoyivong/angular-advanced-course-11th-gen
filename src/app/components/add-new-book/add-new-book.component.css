@@ -1,0 +1,21 @@
+label {
+  color: "#374151";
+  font-size: 20px;
+}
+input,
+select {
+  border-radius: 5px;
+  border: 1px solid var(--default-gray-300, #d1d5db);
+  background: var(--default-white, #fff);
+  width: 429px;
+  height: 54px;
+  padding: 12px 20px;
+  font-size: 20px;
+}
+
+textarea {
+  width: 100%;
+  height: 230px;
+  border-radius: 8px;
+  padding: 12px 20px;
+}
