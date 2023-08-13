@@ -5,6 +5,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { BooksComponent } from './components/books/books.component';
 import { LogInComponent } from './components/log-in/log-in.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { ReadBookDetailsComponent } from './components/read-book-details/read-book-details.component';
 
 const routes: Routes = [
   {
@@ -18,6 +19,10 @@ const routes: Routes = [
       {
         path: 'books',
         component: BooksComponent,
+      },
+      {
+        path: 'books/:id',
+        component: ReadBookDetailsComponent,
       },
       {
         path: 'logIn',

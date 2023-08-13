@@ -1,6 +1,6 @@
 <div class="h-[110vh]">
   <div
-    class="bg-no-repeat w-full bg-cover h-[399px] relative"
+    class="bg-no-repeat w-full bg-cover h-[500px] relative"
     style="
       background-image: url('../../../assets/images/Add\ Book\ Header.svg');
     "
@@ -9,7 +9,7 @@
       <img src="../../../assets/images/Button.svg" alt="" />
     </div>
     <div
-      class="bg-contentBg h-[754px] w-2/3 absolute z-10 top-48 left-64 rounded-xl"
+      class="bg-contentBg h-[820px] w-2/3 absolute z-10 top-44 left-64 rounded-xl"
     >
       <p class="capitalize text-3xl text-center pt-5">add new book</p>
       <form [formGroup]="addNewBookForm" (ngSubmit)="submitAddNewBook()">
@@ -18,7 +18,7 @@
             <img src="../../../assets/images/Group 7582.svg" alt="" />
           </div>
 
-          <div class="col-span-1 pt-5">
+          <div class="col-span-1 pt-1">
             <label for="title">Title </label> <br />
             <input
               type="text"
@@ -59,8 +59,9 @@
           ></textarea>
           <br />
         </div>
+
         <div class="px-20">
-          <button class="mt-5 py-2 px-8 rounded-xl bg-btnYellow">Create</button>
+          <button class="mt-2 py-2 px-8 rounded-xl bg-btnYellow">Create</button>
         </div>
       </form>
     </div>

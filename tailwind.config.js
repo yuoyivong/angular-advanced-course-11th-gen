@@ -10,11 +10,18 @@ module.exports = {
         btnYellow: "#FFCA42",
         textBlue: "#374151",
       },
+      colors: {
+        authorText: "#FFCA42",
+        blueText: "#1B3764",
+      },
+      borderColor: {
+        readNowBorder: "#FFCA42",
+      },
 
       fontFamily: {
         rowdies: ["Rowdies", "Ubuntu", "cursive"],
       },
     },
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/line-clamp")],
 };

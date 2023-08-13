@@ -1,0 +1,41 @@
+<div class="h-[165vh] bg-contentBg">
+  <div
+    class="bg-no-repeat w-full bg-cover h-[500px] relative"
+    style="
+      background-image: url('../../../assets/images/Add\ Book\ Header.svg');
+    "
+  >
+    <div class="pt-10 pl-24">
+      <img src="../../../assets/images/Button.svg" alt="" />
+    </div>
+
+    <div class="bg-white h-[125vh] w-[85%] absolute z-10 top-44 left-20">
+      <div class="absolute z-20">
+        <div class="flex">
+          <img
+            class="w-72"
+            src="../../../assets/images/book cover/{{ tempBook.bookImage }}"
+            alt=""
+          />
+          <div class="flex flex-col pt-10 space-y-2">
+            <h5
+              class="text-blueText mb-2 text-3xl tracking-tight dark:text-white"
+            >
+              {{ tempBook.title | titlecase }}
+            </h5>
+
+            <p class="text-authorText">{{ tempBook.author | uppercase }}</p>
+
+            <p class="font-light">{{ tempBook.category | titlecase }}</p>
+          </div>
+        </div>
+
+        <!-- desctiption -->
+        <div class="px-20">
+          <p class="text-xl">Description</p>
+          <p class="text-justify font-light text-sm">{{ tempBook.description }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
