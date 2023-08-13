@@ -28,7 +28,7 @@
             />
             <br />
 
-            <label for="author">Author </label> <br />
+            <label for="author">Author</label> <br />
             <input
               type="text"
               formControlName="author"
@@ -41,6 +41,15 @@
             <select formControlName="category">
               <option value="" selected class="font-light">
                 Choose Category
+              </option>
+              <!-- <option
+                *ngFor="let bookCategory of allBooks"
+                [ngValue]="bookCategory"
+              >
+                {{ bookCategory.category | titlecase }}
+              </option> -->
+              <option>
+                {{ bookCategory }}
               </option>
             </select>
 
@@ -61,7 +70,9 @@
         </div>
 
         <div class="px-20">
-          <button class="mt-2 py-2 px-8 rounded-xl bg-btnYellow">Create</button>
+          <button class="mt-2 py-2 px-8 rounded-xl bg-btnYellow" type="submit">
+            Create
+          </button>
         </div>
       </form>
     </div>
