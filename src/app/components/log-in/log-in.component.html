@@ -34,7 +34,26 @@
                 id="input-group-1"
                 class="border border-gray-300 text-gray-900 rounded-lg"
                 placeholder="Email"
+                appEmailValidation
               />
+
+              <!-- validate email error -->
+              <div
+                *ngIf="loginForm.get('email')?.invalid"
+                class="mt-5 text-red-400"
+              >
+                <p
+                  *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.errors?.['required']"
+                >
+                  Email is required.
+                </p>
+
+                <p
+                  *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.errors?.['invalidEmail']"
+                >
+                  Invalid email address
+                </p>
+              </div>
             </div>
 
             <div class="relative mb-6 text-center">
@@ -49,11 +68,39 @@
                 placeholder="Password"
                 id="input-group-1"
                 class="border border-gray-300 text-gray-900 rounded-lg"
+                appPasswordValidation
               />
+
+              <!-- password validation -->
+              <div
+                *ngIf="loginForm.get('password')?.invalid"
+                class="mt-5 text-red-400"
+              >
+                <p
+                  *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.errors?.['required']"
+                >
+                  Password is required.
+                </p>
+
+                <p
+                  *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.errors?.['invalidPassword']"
+                >
+                  Must contain at least 8 characters, one uppercase,lowercase,
+                  and one number
+                </p>
+              </div>
             </div>
 
-            <div class="w-full rounded-lg bg-btnBg text-white text-center py-1.5">
-              <button type="submit">Log in</button>
+            <div
+              class="w-full rounded-lg bg-btnBg text-white text-center py-1.5"
+            >
+              <button
+                type="submit"
+                (click)="goToHomepage()"
+                [disabled]="loginForm.invalid"
+              >
+                Log in
+              </button>
             </div>
           </div>
         </form>

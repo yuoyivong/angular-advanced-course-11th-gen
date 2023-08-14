@@ -8,6 +8,7 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { ReadBookDetailsComponent } from './components/read-book-details/read-book-details.component';
 import { AddNewBookComponent } from './components/add-new-book/add-new-book.component';
 import { FilterBookByCategoryComponent } from './components/filter-book-by-category/filter-book-by-category.component';
+import { AuthGuardService } from './services/guard/auth-guard.service';
 
 const routes: Routes = [
   {
@@ -21,6 +22,7 @@ const routes: Routes = [
       {
         path: 'books',
         component: BooksComponent,
+        canActivate: [AuthGuardService],
         children: [
           {
             path: 'filterBookCategory',

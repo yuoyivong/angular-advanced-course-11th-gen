@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, map } from 'rxjs';
 import { IBook } from 'src/app/models/book';
@@ -13,7 +14,9 @@ export class BooksComponent implements OnInit {
   allGenresBooks: IBook[] = [];
   getCategoryName: string | undefined | null;
 
-  categoryBookList$: Observable<string[]> | undefined;
+  categoryBookList$!: Observable<string[]>;
+
+  searchCategory = new FormControl();
 
   constructor(
     private router: Router,

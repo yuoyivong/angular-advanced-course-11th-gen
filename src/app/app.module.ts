@@ -16,6 +16,9 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { AllBooksService } from './services/all-books.service';
 import { HttpClientModule } from '@angular/common/http';
 import { FilterBookByCategoryComponent } from './components/filter-book-by-category/filter-book-by-category.component';
+import { SearchPipe } from './pipes/search.pipe';
+import { EmailValidationDirective } from './directives/email-validation.directive';
+import { PasswordValidationDirective } from './directives/password-validation.directive';
 
 @NgModule({
   declarations: [
@@ -29,6 +32,9 @@ import { FilterBookByCategoryComponent } from './components/filter-book-by-categ
     AddNewBookComponent,
     ReadBookDetailsComponent,
     FilterBookByCategoryComponent,
+    SearchPipe,
+    EmailValidationDirective,
+    PasswordValidationDirective,
   ],
   imports: [
     BrowserModule,
