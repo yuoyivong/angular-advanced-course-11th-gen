@@ -6,6 +6,8 @@ import { BooksComponent } from './components/books/books.component';
 import { LogInComponent } from './components/log-in/log-in.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { ReadBookDetailsComponent } from './components/read-book-details/read-book-details.component';
+import { AddNewBookComponent } from './components/add-new-book/add-new-book.component';
+import { FilterBookByCategoryComponent } from './components/filter-book-by-category/filter-book-by-category.component';
 
 const routes: Routes = [
   {
@@ -19,6 +21,12 @@ const routes: Routes = [
       {
         path: 'books',
         component: BooksComponent,
+        children: [
+          {
+            path: 'filterBookCategory',
+            component: FilterBookByCategoryComponent,
+          },
+        ],
       },
       {
         path: 'books/:id',
@@ -27,6 +35,10 @@ const routes: Routes = [
       {
         path: 'logIn',
         component: LogInComponent,
+      },
+      {
+        path: 'addNewBook',
+        component: AddNewBookComponent,
       },
     ],
   },

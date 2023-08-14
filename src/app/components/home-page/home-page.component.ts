@@ -16,6 +16,7 @@ export class HomePageComponent implements OnInit {
   ngOnInit(): void {
     this.getBooks();
   }
+  
   // get books
   getBooks() {
     this.bookService.getAllBooks().subscribe((response) => {

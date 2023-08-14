@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { IBook } from 'src/app/models/book';
 import { BookService } from 'src/app/services/book.service';
 
@@ -15,7 +15,8 @@ export class ReadBookDetailsComponent implements OnInit {
 
   constructor(
     private bookService: BookService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -51,4 +52,9 @@ export class ReadBookDetailsComponent implements OnInit {
   //     }
   //   }
   // }
+
+  // go to home page
+  goToHomepage() {
+    this.router.navigate(['/']);
+  }
 }

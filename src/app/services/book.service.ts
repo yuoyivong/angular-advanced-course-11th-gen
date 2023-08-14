@@ -25,4 +25,14 @@ export class BookService {
   getBookById(id: number | undefined | null): Observable<IBook> {
     return this.http.get<IBook>(this.booksUrl + id);
   }
+
+  // add new book
+  createNewBook(book: IBook): Observable<IBook> {
+    return this.http.post<IBook>(this.booksUrl, book).pipe(
+      catchError((error: HttpErrorResponse) => {
+        console.error(error);
+        return throwError(() => error);
+      })
+    );
+  }
 }

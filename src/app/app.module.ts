@@ -15,6 +15,7 @@ import { ReadBookDetailsComponent } from './components/read-book-details/read-bo
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { AllBooksService } from './services/all-books.service';
 import { HttpClientModule } from '@angular/common/http';
+import { FilterBookByCategoryComponent } from './components/filter-book-by-category/filter-book-by-category.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { HttpClientModule } from '@angular/common/http';
     FooterComponent,
     AddNewBookComponent,
     ReadBookDetailsComponent,
+    FilterBookByCategoryComponent,
   ],
   imports: [
     BrowserModule,

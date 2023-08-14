@@ -5,8 +5,10 @@
       background-image: url('../../../assets/images/Add\ Book\ Header.svg');
     "
   >
-    <div class="pt-10 pl-24">
-      <img src="../../../assets/images/Button.svg" alt="" />
+    <div class="pt-10 pl-24 cursor-pointer">
+      <button (click)="goToHomepage()">
+        <img src="../../../assets/images/Button.svg" alt="" />
+      </button>
     </div>
 
     <div class="bg-white h-[125vh] w-[85%] absolute z-10 top-44 left-20">
@@ -33,7 +35,9 @@
         <!-- desctiption -->
         <div class="px-20">
           <p class="text-xl">Description</p>
-          <p class="text-justify font-light text-sm">{{ tempBook.description }}</p>
+          <p class="text-justify font-light text-sm">
+            {{ tempBook.description }}
+          </p>
         </div>
       </div>
     </div>
