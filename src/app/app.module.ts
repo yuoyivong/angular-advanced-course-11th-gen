@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
 import { LogInComponent } from './components/log-in/log-in.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { BooksComponent } from './components/books/books.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
@@ -19,6 +19,8 @@ import { FilterBookByCategoryComponent } from './components/filter-book-by-categ
 import { SearchPipe } from './pipes/search.pipe';
 import { EmailValidationDirective } from './directives/email-validation.directive';
 import { PasswordValidationDirective } from './directives/password-validation.directive';
+import { DeleteBookPopupComponent } from './components/delete-book-popup/delete-book-popup.component';
+import { EditBookPopupComponent } from './components/edit-book-popup/edit-book-popup.component';
 
 @NgModule({
   declarations: [
@@ -35,10 +37,13 @@ import { PasswordValidationDirective } from './directives/password-validation.di
     SearchPipe,
     EmailValidationDirective,
     PasswordValidationDirective,
+    DeleteBookPopupComponent,
+    EditBookPopupComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
     HttpClientInMemoryWebApiModule.forRoot(AllBooksService),

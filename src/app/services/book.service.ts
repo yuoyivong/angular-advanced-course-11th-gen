@@ -35,4 +35,18 @@ export class BookService {
       })
     );
   }
+
+  // delete book
+  deleteBookById(id: number): Observable<number> {
+    return this.http.delete<number>(this.booksUrl + id);
+  }
+
+  // update book by id
+  updateBookById(book: any): Observable<any> {
+    return this.http.put(this.booksUrl + book.id, book);
+  }
+  // updateBookById(id: number, book: IBook): Observable<any> {
+  //   console.log('Book id : ', id);
+  //   return this.http.put(this.booksUrl + id, book);
+  // }
 }

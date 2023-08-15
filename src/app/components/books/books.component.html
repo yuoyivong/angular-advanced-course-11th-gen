@@ -48,8 +48,9 @@
             type="search"
             id="default-search"
             class="font-light mb-2 block w-full py-1.5 pl-10 text-sm text-gray-900 border border-readNowBorder rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500"
-            placeholder="Search Book"
+            placeholder="Search Category"
             required
+            [formControl]="searchCategory"
           />
         </div>
 
@@ -63,7 +64,9 @@
             >All Genres</a
           >
           <div
-            *ngFor="let category of categoryBookList$ | async"
+            *ngFor="
+              let category of categoryBookList$ | search : searchCategory.value
+            "
             class="cursor-pointer mt-5 font-light ml-5"
           >
             <a
@@ -79,6 +82,7 @@
 
       <!-- display all books by each category -->
       <div class="h-screen w-[75%]">
+        <!-- all book genres -->
         <div *ngIf="getCategoryName === null">
           <div class="bg-white mt-10 h-[135vh]">
             <p class="text-center text-2xl py-5 uppercase">all genres</p>
@@ -111,11 +115,28 @@
                       {{ book.description }}
                     </p>
                     <div class="font-light text-blueText">
+                      <!-- button view details -->
                       <button
                         (click)="setBookIdViaUrl(book.id)"
-                        class="rounded-lg border border-readNowBorder py-1.5 px-8"
+                        class="rounded-lg border border-readNowBorder py-1.5 px-5 text-yellow-500 hover:bg-yellow-100"
                       >
-                        Read Now
+                        View
+                      </button>
+
+                      <!-- button edit book by id -->
+                      <button
+                        (click)="setIsEditPopup(book)"
+                        class="rounded-lg border border-blue-600 py-1.5 px-5 mx-3 hover:bg-blue-100"
+                      >
+                        Edit
+                      </button>
+
+                      <!-- button delete book by id -->
+                      <button
+                        (click)="removeBook(book)"
+                        class="rounded-lg border border-red-600 py-1.5 px-5 text-red-500 hover:bg-red-100"
+                      >
+                        Delete
                       </button>
                     </div>
                   </div>
@@ -124,6 +145,8 @@
             </div>
           </div>
         </div>
+
+        <!-- show books by its category -->
         <div *ngIf="getCategoryName !== null">
           <router-outlet></router-outlet>
         </div>
@@ -131,3 +154,72 @@
     </div>
   </div>
 </div>
+
+<!--  edit popup -->
+<div
+  *ngIf="isEditPopup"
+  [hidden]="isEditPopup"
+  class="min-w-screen h-screen animated fadeIn faster fixed left-0 top-0 flex justify-center items-center inset-0 z-50 outline-none focus:outline-none bg-no-repeat bg-center bg-cover"
+  id="modal-id"
+>
+  <div
+    class="w-full max-w-lg p-5 relative mx-auto my-auto rounded-xl shadow-lg bg-white"
+  >
+    <!--content-->
+    <div class="">
+      <!--body-->
+
+      <form>
+        <label for="title">Title </label> <br />
+        <input
+          type="text"
+          name="title"
+          placeholder="Enter title"
+          class="font-light editInput"
+          [(ngModel)]="editBook.title"
+        />
+        <br />
+
+        <!-- author -->
+        <label for="author">Author</label> <br />
+        <input
+          type="text"
+          name="author"
+          placeholder="Enter Author Name"
+          class="font-light editInput"
+          [(ngModel)]="editBook.author"
+        />
+        <br />
+
+        <!-- description -->
+        <label for="author">Description</label> <br />
+        <input
+          type="text"
+          name="description"
+          placeholder="Enter Description"
+          class="font-light editInput"
+          [(ngModel)]="editBook.description"
+        />
+        <br />
+      </form>
+
+      <!--footer-->
+      <div class="p-3 mt-2 text-center space-x-4 md:block">
+        <button
+          (click)="isEditPopup = false"
+          class="mb-2 md:mb-0 bg-green-700 px-5 py-2 text-sm shadow-sm font-medium tracking-wider border text-white rounded-lg"
+        >
+          Cancel
+        </button>
+        <button
+          (click)="handleEditBook()"
+          type="submit"
+          class="mb-2 md:mb-0 bg-blueBg border px-5 py-2 text-sm shadow-sm font-medium tracking-wider text-white rounded-lg"
+        >
+          Update
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="isEditPopup" class="opacity-30 fixed inset-0 z-40 bg-black"></div>

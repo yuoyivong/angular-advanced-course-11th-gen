@@ -15,11 +15,11 @@
     >
       <p class="capitalize text-3xl text-center pt-5">add new book</p>
       <form [formGroup]="addNewBookForm" (ngSubmit)="submitAddNewBook()">
-        <div class="grid grid-cols-2 mt-8">
+        <div class="grid grid-cols-3 mt-8">
           <!-- upload image -->
           <div class="col-span-1 flex justify-center items-center">
             <!-- select file image -->
-            <div>
+            <!-- <div>
               <input
                 type="file"
                 accept="image/*"
@@ -28,7 +28,6 @@
                 #fileUplaod
               />
 
-              <!-- image preview -->
               <ng-template
                 [ngIf]="imageUrl && imageUrl !== ''"
                 [ngIfElse]="sampleImage"
@@ -48,10 +47,16 @@
                   class="cursor-pointer"
                 />
               </ng-template>
-            </div>
+         
+            </div> -->
+
+            <img
+              src="../../../assets/images/book cover/{{ defaultImage }}"
+              class="w-44 border rounded-lg ml-10"
+            />
           </div>
 
-          <div class="col-span-1 pt-1">
+          <div class="col-span-2 pt-1 ml-10">
             <!-- title -->
             <label for="title">Title </label> <br />
             <input
@@ -59,6 +64,7 @@
               formControlName="title"
               placeholder="Enter title"
               class="font-light"
+              value="Title"
             />
             <br />
 
@@ -105,13 +111,15 @@
         </div>
 
         <div class="px-20">
+          <!-- button add -->
           <button
-            class="mt-2 py-2 px-8 rounded-xl bg-btnYellow"
             type="submit"
+            class="mt-2 py-2 px-8 rounded-xl bg-btnYellow"
             (click)="createBook()"
           >
             Create
           </button>
+
         </div>
       </form>
     </div>

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
-import { Observable, map } from 'rxjs';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Observable, first, map } from 'rxjs';
 import { IBook } from 'src/app/models/book';
 import { BookService } from 'src/app/services/book.service';
 
@@ -13,10 +13,14 @@ import { BookService } from 'src/app/services/book.service';
 export class AddNewBookComponent implements OnInit {
   allBooks: IBook[] = [];
   bookCategory$: Observable<string[]> | undefined;
-  defaultImage = '../../../assets/images/Group 7582.svg';
+  defaultImage = 'Rich People Problem.svg';
   imageUrl: string | undefined;
 
-  constructor(private bookService: BookService, private router: Router) {}
+  constructor(
+    private bookService: BookService,
+    private router: Router,
+    private activatedRoute: ActivatedRoute
+  ) {}
 
   addNewBookForm!: FormGroup;
 
@@ -24,13 +28,26 @@ export class AddNewBookComponent implements OnInit {
     this.getAllBooks();
 
     this.addNewBookForm = new FormGroup({
-      title: new FormControl(null, [Validators.required, Validators.email]),
+      title: new FormControl(null, [Validators.required]),
       author: new FormControl(null, [Validators.required]),
       category: new FormControl(null, [Validators.required]),
       description: new FormControl(null, [Validators.required]),
-      avatar: new FormControl(null, [Validators.required]),
+      bookImage: new FormControl(null, [Validators.required]),
     });
     console.log(this.bookCategory$?.subscribe((res) => console.log(res)));
+
+    // update part
+    // this.editBookId = +this.activatedRoute.snapshot.queryParamMap.get('edit')!;
+    // if (this.editBookId) {
+    //   this.bookService
+    //     .getBookById(this.editBookId)
+    //     .pipe(first())
+    //     .subscribe((editFormValues) => {
+    //       console.log('Edit Form : ', editFormValues);
+    //       this.addNewBookForm.patchValue(editFormValues);
+    //     });
+    // }
+    // console.log('Add Form : ', this.addNewBookForm.getRawValue());
   }
 
   // image preview
@@ -71,14 +88,15 @@ export class AddNewBookComponent implements OnInit {
   createBook() {
     const bookData = {
       ...this.addNewBookForm.value,
-      avatar: this.addNewBookForm.value.avatar.name,
+      // avatar: this.addNewBookForm.value.avatar.name,
+      bookImage: this.defaultImage,
     };
     console.log('Book Data : ', bookData.avatar);
 
-    if (bookData) {
-      const fileName = bookData.avatar;
-      const filePath = `assets/images/book cover/${fileName}`;
-    }
+    // if (bookData) {
+    //   const fileName = bookData.avatar;
+    //   const filePath = `assets/images/book cover/${fileName}`;
+    // }
 
     this.bookService.createNewBook(bookData).subscribe((response) => {
       console.log(response);
@@ -89,5 +107,16 @@ export class AddNewBookComponent implements OnInit {
     console.log('Add New Book : ', this.addNewBookForm);
     this.addNewBookForm.reset();
     this.router.navigate(['/']);
+    // this.saveBook();
+    // this.bookService.getAllBooks().subscribe((res) => console.log(res));
   }
+
+  // private saveBook() {
+  //   return this.editBookId
+  //     ? this.bookService.updateBookById(
+  //         this.editBookId,
+  //         this.addNewBookForm.value
+  //       )
+  //     : this.bookService.createNewBook(this.addNewBookForm.value);
+  // }
 }

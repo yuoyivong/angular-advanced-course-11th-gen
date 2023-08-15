@@ -3,7 +3,7 @@
     class="grid grid-cols-2 container mx-auto rounded-lg m-16 border h-[743px]"
   >
     <!-- image -->
-    <div class="col-span-1 h-full bg-blue rounded-l-lg">
+    <div class="col-span-1 h-full bg-blueBg rounded-l-lg">
       <div class="text-white uppercase p-10 text-xl">mybook</div>
       <div class="text-white flex flex-col items-center">
         <img src="../../../assets/images/Artboard 15@2x 1.svg" />
@@ -23,11 +23,11 @@
         <form [formGroup]="loginForm" (ngSubmit)="submitLogin()">
           <div>
             <div class="relative mb-3 mt-8 text-center">
-              <div
+              <!-- <div
                 class="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none"
               >
                 <img src="../../../assets/images/icon.svg" alt="" />
-              </div>
+              </div> -->
               <input
                 formControlName="email"
                 type="text"
@@ -57,11 +57,11 @@
             </div>
 
             <div class="relative mb-6 text-center">
-              <div
+              <!-- <div
                 class="absolute inset-y-0 left-0 flex items-center pl-3.5 pointer-events-none"
               >
                 <img src="../../../assets/images/Group.svg" alt="" />
-              </div>
+              </div> -->
               <input
                 type="password"
                 formControlName="password"

@@ -43,7 +43,9 @@
                 {{ book.title | titlecase }}
               </h5>
 
-              <p class="text-authorText">{{ book.author | uppercase }}</p>
+              <p class="text-authorText truncate">
+                {{ book.author | uppercase }}
+              </p>
 
               <p
                 class="line-clamp-3 mb-3 font-light text-gray-700 dark:text-gray-400"
@@ -51,11 +53,28 @@
                 {{ book.description }}
               </p>
               <div class="font-light text-blueText">
+                <!-- button view details -->
                 <button
                   (click)="setBookIdViaUrl(book.id)"
-                  class="rounded-lg border border-readNowBorder py-1.5 px-8"
+                  class="rounded-lg border border-readNowBorder py-1.5 px-5 text-yellow-500 hover:bg-yellow-100"
                 >
-                  Read Now
+                  View
+                </button>
+
+                <!-- button edit book by id -->
+                <button
+                  (click)="setIsEditPopup(book)"
+                  class="rounded-lg border border-blue-600 py-1.5 px-5 mx-3 hover:bg-blue-100"
+                >
+                  Edit
+                </button>
+
+                <!-- button delete book by id -->
+                <button
+                  (click)="removeBook(book)"
+                  class="rounded-lg border border-red-600 py-1.5 px-5 text-red-500 hover:bg-red-100"
+                >
+                  Delete
                 </button>
               </div>
             </div>
@@ -65,3 +84,78 @@
     </div>
   </div>
 </div>
+
+<!-- <app-delete-book-popup
+  *ngIf="isDeletePopup"
+  [onClosePopup]="setIsDeletePopup"
+></app-delete-book-popup>
+<div *ngIf="isDeletePopup" class="opacity-25 fixed inset-0 z-40 bg-black"></div> -->
+
+<!--  edit popup -->
+<div
+  *ngIf="isEditPopup"
+  [hidden]="isEditPopup"
+  class="min-w-screen h-screen animated fadeIn faster fixed left-0 top-0 flex justify-center items-center inset-0 z-50 outline-none focus:outline-none bg-no-repeat bg-center bg-cover"
+  id="modal-id"
+>
+  <div
+    class="w-full max-w-lg p-5 relative mx-auto my-auto rounded-xl shadow-lg bg-white"
+  >
+    <!--content-->
+    <div class="">
+      <!--body-->
+
+      <form>
+        <label for="title">Title </label> <br />
+        <input
+          type="text"
+          name="title"
+          placeholder="Enter title"
+          class="font-light"
+          [(ngModel)]="editBook.title"
+        />
+        <br />
+
+        <!-- author -->
+        <label for="author">Author</label> <br />
+        <input
+          type="text"
+          name="author"
+          placeholder="Enter Author Name"
+          class="font-light"
+          [(ngModel)]="editBook.author"
+        />
+        <br />
+
+        <!-- description -->
+        <label for="author">Description</label> <br />
+        <input
+          type="text"
+          name="description"
+          placeholder="Enter Description"
+          class="font-light"
+          [(ngModel)]="editBook.description"
+        />
+        <br />
+      </form>
+
+      <!--footer-->
+      <div class="p-3 mt-2 text-center space-x-4 md:block">
+        <button
+          (click)="isEditPopup = false"
+          class="mb-2 md:mb-0 bg-green-700 px-5 py-2 text-sm shadow-sm font-medium tracking-wider border text-white rounded-lg"
+        >
+          Cancel
+        </button>
+        <button
+          (click)="handleEditBook()"
+          type="submit"
+          class="mb-2 md:mb-0 bg-blueBg border px-5 py-2 text-sm shadow-sm font-medium tracking-wider text-white rounded-lg"
+        >
+          Update
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="isEditPopup" class="opacity-30 fixed inset-0 z-40 bg-black"></div>
